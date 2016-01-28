@@ -1,4 +1,4 @@
-clc; clear all;
+clc;clear all;
 
 if 1 % 2a and 2b
 	disp('2a and 2b');
@@ -29,15 +29,16 @@ if 1 % 2a and 2b
 	title('ode15 mass');
 end
 
-input('Press enter to continue');
+input('Press enter to continue to 2c');
 
 if 1 % 2c
+	disp('ode15 was used because the matlab manual states that it is good for stiff systems');
 	a=0;b=1e11;range=[a b];init=[1 0 0];
 	[t15,y15]=ode15s(@ex3_2system, range, init);
 	for i=0:2
 		subplot(1,4,1+i);
 		semilogx(t15,y15(:,1+i));
-		title(char('A' + i));
+		title(char('A'+i));
 	end
 	subplot(1,4,4);
 	plot(t15,sum(y15,2));
