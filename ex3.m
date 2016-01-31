@@ -44,7 +44,7 @@ if input('Trapezoid Method? (y/n): ', 's') == 'y'
 	h=input('Step size: ');
 	y(1)=10;i=1;to=input('T_{end}: ');
 	y_next=@(t,y)(y+h/2*(-100*y+101*t+1001+101*(t+h)+1001))/(1+50*h);
-	for t=0:h:to;
+	for t=1:h:to;
 		y(i+1)=y_next(t,y(i));
 		i=i+1;
 	end
