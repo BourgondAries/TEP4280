@@ -32,8 +32,9 @@ end
 input('Press enter to continue to 2c');
 
 if 1 % 2c
+
 	disp('ode15 was used because the matlab manual states that it is good for stiff systems');
-	a=0;b=1e11;range=[a b];init=[1 0 0];
+	a=1;b=1e11;range=[a b];init=[1 0 0];
 	[t15,y15]=ode15s(@ex3_2system, range, init);
 	for i=0:2
 		subplot(1,4,1+i);
