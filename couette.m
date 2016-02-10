@@ -8,10 +8,10 @@ close all
 clc
 
 values = [];
-for m=1:8
+for m=0:7
 	% Number of grid points and cell size
-	jmax=21;
-	jmax = 2^m + 1;
+	jmax=33;
+	% jmax = 2^m + 1;
 	dy=1/(jmax-1);
 
 	% Initialize velocity array and set right B.C.
@@ -27,7 +27,10 @@ for m=1:8
 	% c)
 	% dt=0.00130;  % Instability 1/2/20^2 = 0.0013 <= dt
 	% d)
-	dt=7e-6;
+	% dt=7e-6;
+	% e)
+	dtmax = 1/2*dy^2;
+	dt = 2^(-m)*dtmax;
 	tstop=1;
 	nmax=ceil(tstop/dt);
 
@@ -35,7 +38,8 @@ for m=1:8
 	dt=tstop/nmax;
 	% Stable for r <= 0.5
 	r=dt/dy^2;
-	for n=1:nmax
+	r = 1/2;
+	for n=2:nmax
 			for j=2:jmax-1
 					nu(j)=u(j)*(1-2*r)+(u(j+1)+u(j-1))*r;
 			end
@@ -74,11 +78,10 @@ values
 realval = 1/2;
 rerror = [];
 cells = [];
-for i=1:8
-	rerror = [rerror abs(1-values(i,1)/realval)];
-	cells = [cells 2^i];
+for i=0:7
+	rerror = [rerror abs(1-values(i+1,1)/realval)];
+	cells = [cells ceil(tstop/2^(-i))];
 end
 loglog(cells, rerror);
 xlabel('Grid Cells');
 ylabel('Relative Error');
-
