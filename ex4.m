@@ -8,7 +8,7 @@ if input('Find when u(1/2, t) = 1/4? (y/n): ', 's') == 'y'
 	range = [0 1e-1];
 	fplot(uz, range);
 	hold on;
-	fplot(@(t) 1, range);
+	fplot(@(t) 0, range);
 	fzero(uz, 1/2, [0 1])
 	% ans = 0.094686934050575
 end
