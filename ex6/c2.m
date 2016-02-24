@@ -35,8 +35,6 @@ if input('Run the Upwind-Euler solver for 2d? (y/n) (n): ', 's') == 'y'
 
 end
 if input('Run the FTCS solver for 2e? (y/n) (n): ', 's') == 'y'
-	endtime = 0.3;
-	steps = endtime/dt;
 	matrix = zeros(jmax) + eye(jmax) * 1;
 	matrix = matrix + -C/2 * diag(ones(1, jmax-1), -1);
 	matrix = matrix + -C/2 * diag(ones(1, jmax-1), 1);
