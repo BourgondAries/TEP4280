@@ -81,14 +81,15 @@ if prompt('2c?')
 	speeds(speeds < -0.5) = 2.2;
 	u = speeds; v = u; t = 0;
 	while true
+		plot(domain, v);
+		title(['t=', num2str(t)]);
+		axis([-1, 1, 0, 3]);
+		disp('Press enter to continue');
+		u = v; pause;
 		t = t + dt;
 		for i = 2:numel(u)
 			v(i) = u(i) - m*(u(i)^2 - u(i-1)^2);
 		end
-		plot(domain, v);
-		title(['t=', num2str(t)]);
-		disp('Press enter to continue');
-		u = v; pause;
 	end
 end
 if prompt('2d?')
@@ -106,15 +107,16 @@ if prompt('2d?')
 	% What I've chosen to do here is to propagate
 	t = 0;
 	while true
+		plot(domain, v);
+		title(['t=', num2str(t)]);
+		axis([-1, 1, 0, 1]);
+		disp('Press enter to continue');
+		u = v; pause;
 		t = t + dt;
 		for i = 2:numel(u)
 			v(i) = u(i) - m*(u(i)^2 - u(i-1)^2);
 		end
 		% Here we compute the loopback:
 		v(1) = u(numel(u)) - m*(u(numel(u))^2 - u(numel(u)-1)^2);
-		plot(domain, v);
-		title(['t=', num2str(t)]);
-		disp('Press enter to continue');
-		u = v; pause;
 	end
 end
