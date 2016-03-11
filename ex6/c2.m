@@ -2,6 +2,7 @@ clc; clear all;
 
 if input('Do you want to run the analytic solution? (y/n) (n): ', 's') == 'y'
 	f = @(x,t) 1000*heaviside(x--0.8*t-1);
+	f = @(x,t) 1000*(x--0.8*t);
 	endtime = 1;
 	dt = 0.0066188118811881;
 	steps = endtime/dt;
